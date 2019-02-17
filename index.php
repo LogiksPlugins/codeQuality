@@ -50,6 +50,9 @@ echo _js(["chart","codeQuality"]);
   .panel .panel-body {
     overflow-wrap: break-word;
   }
+  .alert {
+    margin-bottom: 2px;
+  }
 </style>
 <script>
 var loadedPlugins = [];

@@ -32,7 +32,7 @@ switch ($_REQUEST['action']) {
     break;
 }
 
-function getAllFiles($path, $filter = '', $exclude = '') {
+function getAllFiles($path, $filter = '', $exclude = '.git|tmp|.temp|logs') {
 //     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
   
@@ -41,11 +41,11 @@ function getAllFiles($path, $filter = '', $exclude = '') {
         if ($file->isFile()) { 
           $tempPath = $file->getPathname();
           
-          if(!empty($exclude) && preg_match($exclude, $tempPath)) {
+          if(!empty($exclude) && preg_match("/{$exclude}/", $tempPath)) {
             continue;
           }
           
-          if(empty($filter) || preg_match($filter, $tempPath)) {
+          if(empty($filter) || preg_match("/{$filter}/", $tempPath)) {
             $files[] = $tempPath;
           }
         }
