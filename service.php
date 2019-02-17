@@ -6,7 +6,7 @@ $debug = false;
 
 $_ENV['BASEPATH'] = $appPath;
 
-if(isset($_REQUEST['debug']) && $_REQUEST['debug']=="true") {
+if(isset($_GET['debug']) && $_GET['debug']=="true") {
   $debug = true;
 }
 

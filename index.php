@@ -58,9 +58,11 @@ $(function() {
   if(loadedPlugins==null) loadedPlugins =[];
   else loadedPlugins = loadedPlugins.split(",");
   
+  $("#pgtoolbar .nav.navbar-right").prepend('<li style="padding:10px;"><label><input type=checkbox name=showDebug id=showDebug /> Show Debug<label></li>');
+  
   $.each(loadedPlugins, function(a,b) {
     $("input[name='plugins'][value='"+b+"']","#sidebarArea")[0].checked=true;
-  })
+  });
 });
 function reloadPluginList() {
   $("#contentArea").html("<h3 align=center>Run Code Analysis</h3></div>");
@@ -78,7 +80,7 @@ function runQA() {//panel-danger, panel-success, panel-info, panel-warning
                              "<div class='panel-heading'>"+pluginTitle+" Plugin Results</div><div class='panel-body'>"+
                              "</div></div>");
     $("#"+pluginID).find(".panel-body").html("<div align=center><br><br><i class='fa fa-spinner fa-spin fa-2x'></i></div>");
-    $("#"+pluginID).find(".panel-body").load(_service("codeQuality","runplugin")+"&plugin="+$(this).val());
+    $("#"+pluginID).find(".panel-body").load(_service("codeQuality","runplugin")+"&plugin="+$(this).val()+"&debug="+($("#showDebug").is(":checked")?"true":"false"));
   });
   
   if(loadedPlugins.length<=0) {
