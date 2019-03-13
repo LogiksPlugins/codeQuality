@@ -32,6 +32,23 @@ switch ($_REQUEST['action']) {
     break;
 }
 
+function printResultBlock($result, $title, $width=6) {
+  if(!$result || $result==null) return;
+  if($title && strlen($title)<=0) $title = "Error in analysis";
+  
+  echo "<div class='col-md-{$width}'>";
+  if(is_array($result)) {
+    if($title)
+      echo "<div class='row alert alert-warning'><div class='col-md-9'>{$title}</div><div class='col-md-3 text-right'>[".count($result)."]</div></div>";
+    echo implode("",$result);
+  } else {
+    if($title)
+      echo "<div class='row alert alert-warning'><div class='col-md-9'>{$title}</div><div class='col-md-3 text-right'></div></div>";
+    echo $result;
+  }
+  echo "</div>";
+}
+
 function getAllFiles($path, $filter = '', $exclude = '.git|tmp|.temp|logs') {
 //     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);

@@ -15,8 +15,14 @@ function pageSidebar() {
       if($ext != "php") continue;
       
       $v = (str_replace(".php","",$f));
-      $t = toTitle(str_replace(".php","",$f));
-      $html[] = "<li class='list-group-item'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t}</label></li>";
+      $t = (str_replace(".php","",$f));
+      $t = toTitle(preg_replace('/^[0-9]+-/', '', $t));
+      
+      $size = filesize(__DIR__."/plugins/$f");
+      if($size<=100)
+        $html[] = "<li class='list-group-item'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t} <span class='pull-right label label-info' style='font-size:8px;'>Coming Soon</span></label></li>";
+      else
+        $html[] = "<li class='list-group-item'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t}</label></li>";
     }
     $html = implode("",$html);
     return "<div id='sidebarArea'><ul class='list-group'>{$html}</ul></div>";
@@ -46,12 +52,23 @@ echo _js(["chart","codeQuality"]);
   }
   label {
     font-weight: normal;
+    display: block;
   }
   .panel .panel-body {
     overflow-wrap: break-word;
   }
   .alert {
+    margin: -10px;
     margin-bottom: 2px;
+    padding: 5px;
+    padding-left: 0px;
+  }
+  .hinttext {
+    font-size:12px;
+    text-align: right;
+  }
+  .bold {
+    font-weight: bold;
   }
 </style>
 <script>
