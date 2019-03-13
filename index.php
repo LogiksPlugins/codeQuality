@@ -70,6 +70,12 @@ echo _js(["chart","codeQuality"]);
   .bold {
     font-weight: bold;
   }
+  
+  @media print {
+    .pageCompContent {
+        width: 100% !important;
+    }
+  }
 </style>
 <script>
 var loadedPlugins = [];
