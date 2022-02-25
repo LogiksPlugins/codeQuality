@@ -32,6 +32,13 @@ switch ($_REQUEST['action']) {
     break;
 }
 
+function generateIssueRecord($issueText, $issueHint = false) {
+  if($issueHint)
+    return "<div class='row'><div class='col-md-8 text-left'>{$issueText}</div><div class='col-md-4 hinttext'>{$issueHint}</div></div>";
+  else
+    return "<div class='row'><div class='col-md-12 text-left'>{$issueText}</div></div>";
+}
+
 function printResultBlock($result, $title, $width=6) {
   if(!$result || $result==null) return;
   if($title && strlen($title)<=0) $title = "Error in analysis";

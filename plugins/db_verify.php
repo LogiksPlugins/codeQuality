@@ -45,8 +45,7 @@ if(_db()) {
 
     $textCols = array_filter($cols,"test_txtcols");
     if(count($textCols)>2) {
-      $out3[] = "<div class='row'><div class='col-md-8 text-left'>{$tbl}</div><div class='col-md-4 hinttext'>".
-        count($textCols)." Text Columns</div></div>";
+      $out3[] = generateIssueRecord($tbl, count($textCols)." Text Columns");
     }
     
     //printArray([$cols,$keys,$keyP]);exit();
