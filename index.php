@@ -34,9 +34,11 @@ printPageComponent(false,[
     "toolbar"=>[
       "reloadPluginList"=>["icon"=>"<i class='fa fa-refresh'></i>"],
       "runQA"=>["title"=>"Run","icon"=>"<i class='fa fa-play'></i>","align"=>"left"],
+      ['type'=>"bar"],
+      "openDCAnalysis"=>["title"=>"DC Analysis","icon"=>"<i class='fa fa-play'></i>","align"=>"left"],
 //    ["title"=>"Search Roles","type"=>"search","align"=>"right"],
       
-      //['type'=>"bar"],
+      
       //"rename"=>["icon"=>"<i class='fa fa-terminal'></i>","class"=>"onsidebarSelect onOnlyOneSelect","tips"=>"Rename Content"],
       "printReport"=>["icon"=>"<i class='fa fa-print'></i>","align"=>"right"],
     ],
@@ -130,5 +132,8 @@ function printReport() {
   $("#pgsidebar").hide();
   window.print();
   $("#pgsidebar").show();
+}
+function openDCAnalysis() {
+  parent.openLinkFrame("DataControl Analyser", _link("modules/datacontrolsAnalyser"));
 }
 </script>
