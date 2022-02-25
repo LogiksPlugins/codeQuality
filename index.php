@@ -31,18 +31,18 @@ function pageSidebar() {
 echo _css(["codeQuality"]);
 
 printPageComponent(false,[
-		"toolbar"=>[
- 			"reloadPluginList"=>["icon"=>"<i class='fa fa-refresh'></i>"],
-			"runQA"=>["title"=>"Run","icon"=>"<i class='fa fa-play'></i>","align"=>"left"],
-// 		["title"=>"Search Roles","type"=>"search","align"=>"right"],
-			
-			//['type'=>"bar"],
-			//"rename"=>["icon"=>"<i class='fa fa-terminal'></i>","class"=>"onsidebarSelect onOnlyOneSelect","tips"=>"Rename Content"],
-		  "printReport"=>["icon"=>"<i class='fa fa-print'></i>","align"=>"right"],
-		],
-		"sidebar"=>"pageSidebar",
-		"contentArea"=>"pageContentArea"
-	]);
+    "toolbar"=>[
+      "reloadPluginList"=>["icon"=>"<i class='fa fa-refresh'></i>"],
+      "runQA"=>["title"=>"Run","icon"=>"<i class='fa fa-play'></i>","align"=>"left"],
+//    ["title"=>"Search Roles","type"=>"search","align"=>"right"],
+      
+      //['type'=>"bar"],
+      //"rename"=>["icon"=>"<i class='fa fa-terminal'></i>","class"=>"onsidebarSelect onOnlyOneSelect","tips"=>"Rename Content"],
+      "printReport"=>["icon"=>"<i class='fa fa-print'></i>","align"=>"right"],
+    ],
+    "sidebar"=>"pageSidebar",
+    "contentArea"=>"pageContentArea"
+  ]);
 
 echo _js(["chart","codeQuality"]);
 ?>
@@ -69,6 +69,13 @@ echo _js(["chart","codeQuality"]);
   }
   .bold {
     font-weight: bold;
+  }
+  .panel-body .row {
+    padding:  3px;
+    cursor: pointer;
+  }
+  .panel-body .row:not(.alert):hover {
+    background: #CCCCCC;
   }
   
   @media print {
