@@ -49,7 +49,7 @@ function printResultBlock($result, $title, $width=6) {
   echo "</div>";
 }
 
-function getAllFiles($path, $filter = '', $exclude = '.git|tmp|.temp|logs') {
+function getAllFiles($path, $filter = '', $exclude = '.git|tmp|.temp|logs|usermedia|.install') {
 //     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
     $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
   
