@@ -20,9 +20,9 @@ function pageSidebar() {
       
       $size = filesize(__DIR__."/plugins/$f");
       if($size<=100)
-        $html[] = "<li class='list-group-item'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t} <span class='pull-right label label-info' style='font-size:8px;'>Coming Soon</span></label></li>";
+        $html[] = "<li class='list-group-item code-plugin'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t} <span class='pull-right label label-info'>Coming Soon</span></label></li>";
       else
-        $html[] = "<li class='list-group-item'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t}</label></li>";
+        $html[] = "<li class='list-group-item code-plugin'><label><input type='checkbox' name='plugins' class='pull-left' value='{$v}' /> &nbsp;&nbsp;{$t}</label></li>";
     }
     $html = implode("",$html);
     return "<div id='sidebarArea'><ul class='list-group'>{$html}</ul></div>";
@@ -79,7 +79,9 @@ echo _js(["chart","codeQuality"]);
   .panel-body .row:not(.alert):hover {
     background: #CCCCCC;
   }
-  
+  .list-group-item span.label {
+      font-size:8px !important;
+  }
   @media print {
     .pageCompContent {
         width: 100% !important;
@@ -100,7 +102,8 @@ $(function() {
   });
 });
 function reloadPluginList() {
-  $("#contentArea").html("<h3 align=center>Run Code Analysis</h3></div>");
+    window.location.reload();
+    //$("#contentArea").html("<h3 align=center>Run Code Analysis</h3></div>");
 }
 function runQA() {//panel-danger, panel-success, panel-info, panel-warning
   loadedPlugins = [];
